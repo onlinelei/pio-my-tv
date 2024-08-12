@@ -1,5 +1,6 @@
 .pio/build/nodemcu-32s/FrameworkArduino/FunctionalInterrupt.cpp.o: \
  /Users/ray/.platformio/packages/framework-arduinoespressif32/cores/esp32/FunctionalInterrupt.cpp \
+ src/config/TFTConfig.h \
  /Users/ray/.platformio/packages/framework-arduinoespressif32/cores/esp32/FunctionalInterrupt.h \
  /Users/ray/.platformio/packages/framework-arduinoespressif32/cores/esp32/Arduino.h \
  /Users/ray/.platformio/packages/framework-arduinoespressif32/cores/esp32/esp_arduino_version.h \

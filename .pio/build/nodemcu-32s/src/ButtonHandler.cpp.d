@@ -1,5 +1,6 @@
 .pio/build/nodemcu-32s/src/ButtonHandler.cpp.o: src/ButtonHandler.cpp \
- src/ButtonHandler.h .pio/libdeps/nodemcu-32s/Button2/src/Button2.h \
+ src/config/TFTConfig.h src/ButtonHandler.h \
+ .pio/libdeps/nodemcu-32s/Button2/src/Button2.h \
  /Users/ray/.platformio/packages/framework-arduinoespressif32/cores/esp32/Arduino.h \
  /Users/ray/.platformio/packages/framework-arduinoespressif32/cores/esp32/esp_arduino_version.h \
  /Users/ray/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/freertos/include/freertos/FreeRTOS.h \

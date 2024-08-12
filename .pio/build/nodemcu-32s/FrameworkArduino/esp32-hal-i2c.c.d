@@ -1,5 +1,6 @@
 .pio/build/nodemcu-32s/FrameworkArduino/esp32-hal-i2c.c.o: \
  /Users/ray/.platformio/packages/framework-arduinoespressif32/cores/esp32/esp32-hal-i2c.c \
+ src/config/TFTConfig.h \
  /Users/ray/.platformio/packages/framework-arduinoespressif32/cores/esp32/esp32-hal-i2c.h \
  /Users/ray/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/esp_common/include/esp_err.h \
  /Users/ray/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/esp_common/include/esp_compiler.h \

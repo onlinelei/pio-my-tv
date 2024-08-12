@@ -1,5 +1,6 @@
 .pio/build/nodemcu-32s/FrameworkArduino/wiring_pulse.c.o: \
  /Users/ray/.platformio/packages/framework-arduinoespressif32/cores/esp32/wiring_pulse.c \
+ src/config/TFTConfig.h \
  /Users/ray/.platformio/packages/framework-arduinoespressif32/cores/esp32/wiring_private.h \
  /Users/ray/.platformio/packages/framework-arduinoespressif32/cores/esp32/Arduino.h \
  /Users/ray/.platformio/packages/framework-arduinoespressif32/cores/esp32/esp_arduino_version.h \

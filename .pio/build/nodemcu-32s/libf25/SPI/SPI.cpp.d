@@ -1,5 +1,6 @@
 .pio/build/nodemcu-32s/libf25/SPI/SPI.cpp.o: \
  /Users/ray/.platformio/packages/framework-arduinoespressif32/libraries/SPI/src/SPI.cpp \
+ src/config/TFTConfig.h \
  /Users/ray/.platformio/packages/framework-arduinoespressif32/libraries/SPI/src/SPI.h \
  /Users/ray/.platformio/packages/framework-arduinoespressif32/variants/nodemcu-32s/pins_arduino.h \
  /Users/ray/.platformio/packages/framework-arduinoespressif32/cores/esp32/esp32-hal-spi.h \

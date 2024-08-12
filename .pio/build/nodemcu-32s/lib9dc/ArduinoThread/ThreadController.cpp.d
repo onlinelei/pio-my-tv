@@ -1,6 +1,6 @@
 .pio/build/nodemcu-32s/lib9dc/ArduinoThread/ThreadController.cpp.o: \
  .pio/libdeps/nodemcu-32s/ArduinoThread/ThreadController.cpp \
- .pio/libdeps/nodemcu-32s/ArduinoThread/Thread.h \
+ src/config/TFTConfig.h .pio/libdeps/nodemcu-32s/ArduinoThread/Thread.h \
  /Users/ray/.platformio/packages/framework-arduinoespressif32/cores/esp32/Arduino.h \
  /Users/ray/.platformio/packages/framework-arduinoespressif32/cores/esp32/esp_arduino_version.h \
  /Users/ray/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/freertos/include/freertos/FreeRTOS.h \

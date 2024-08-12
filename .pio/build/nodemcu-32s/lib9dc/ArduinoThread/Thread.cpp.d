@@ -1,5 +1,5 @@
 .pio/build/nodemcu-32s/lib9dc/ArduinoThread/Thread.cpp.o: \
- .pio/libdeps/nodemcu-32s/ArduinoThread/Thread.cpp \
+ .pio/libdeps/nodemcu-32s/ArduinoThread/Thread.cpp src/config/TFTConfig.h \
  .pio/libdeps/nodemcu-32s/ArduinoThread/Thread.h \
  /Users/ray/.platformio/packages/framework-arduinoespressif32/cores/esp32/Arduino.h \
  /Users/ray/.platformio/packages/framework-arduinoespressif32/cores/esp32/esp_arduino_version.h \

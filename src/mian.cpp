@@ -6,7 +6,7 @@
 #include "ButtonHandler.h"
 #include "Animation.h"
 
-#include "config/config.h"
+#include "config/SystemConfig.h"
 
 #define LCD_BL_PIN 22
 DisplayController display;

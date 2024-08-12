@@ -1,6 +1,9 @@
 #include "DisplayController.h"
 #include <Arduino.h>
 
+#include "config/TFTConfig.h"
+
+
 DisplayController::DisplayController()
     : tft(TFT_eSPI()), clk(&tft) {}
 

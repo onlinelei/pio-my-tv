@@ -1,5 +1,6 @@
 .pio/build/nodemcu-32s/lib0b5/FS/FS.cpp.o: \
  /Users/ray/.platformio/packages/framework-arduinoespressif32/libraries/FS/src/FS.cpp \
+ src/config/TFTConfig.h \
  /Users/ray/.platformio/packages/framework-arduinoespressif32/libraries/FS/src/FS.h \
  /Users/ray/.platformio/packages/framework-arduinoespressif32/cores/esp32/Arduino.h \
  /Users/ray/.platformio/packages/framework-arduinoespressif32/cores/esp32/esp_arduino_version.h \

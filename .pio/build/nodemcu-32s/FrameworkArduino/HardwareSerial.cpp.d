@@ -1,5 +1,6 @@
 .pio/build/nodemcu-32s/FrameworkArduino/HardwareSerial.cpp.o: \
  /Users/ray/.platformio/packages/framework-arduinoespressif32/cores/esp32/HardwareSerial.cpp \
+ src/config/TFTConfig.h \
  /Users/ray/.platformio/packages/framework-arduinoespressif32/variants/nodemcu-32s/pins_arduino.h \
  /Users/ray/.platformio/packages/framework-arduinoespressif32/cores/esp32/io_pin_remap.h \
  /Users/ray/.platformio/packages/framework-arduinoespressif32/cores/esp32/Arduino.h \

@@ -1,5 +1,5 @@
 .pio/build/nodemcu-32s/lib8e3/TFT_eSPI/TFT_eSPI.cpp.o: \
- .pio/libdeps/nodemcu-32s/TFT_eSPI/TFT_eSPI.cpp \
+ .pio/libdeps/nodemcu-32s/TFT_eSPI/TFT_eSPI.cpp src/config/TFTConfig.h \
  .pio/libdeps/nodemcu-32s/TFT_eSPI/TFT_eSPI.h \
  /Users/ray/.platformio/packages/framework-arduinoespressif32/cores/esp32/Arduino.h \
  /Users/ray/.platformio/packages/framework-arduinoespressif32/cores/esp32/esp_arduino_version.h \
@@ -139,7 +139,6 @@
  /Users/ray/.platformio/packages/framework-arduinoespressif32/libraries/SPI/src/SPI.h \
  /Users/ray/.platformio/packages/framework-arduinoespressif32/cores/esp32/esp32-hal-spi.h \
  .pio/libdeps/nodemcu-32s/TFT_eSPI/User_Setup_Select.h \
- .pio/libdeps/nodemcu-32s/TFT_eSPI/User_Setup.h \
  .pio/libdeps/nodemcu-32s/TFT_eSPI/TFT_Drivers/ST7789_Defines.h \
  .pio/libdeps/nodemcu-32s/TFT_eSPI/Processors/TFT_eSPI_ESP32.h \
  /Users/ray/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/soc/esp32/include/soc/spi_reg.h \
@@ -229,12 +228,14 @@
  .pio/libdeps/nodemcu-32s/TFT_eSPI/Fonts/Custom/Roboto_Thin_24.h \
  .pio/libdeps/nodemcu-32s/TFT_eSPI/Fonts/Custom/Satisfy_24.h \
  .pio/libdeps/nodemcu-32s/TFT_eSPI/Fonts/Custom/Yellowtail_32.h \
+ .pio/libdeps/nodemcu-32s/TFT_eSPI/Extensions/Touch.h \
  .pio/libdeps/nodemcu-32s/TFT_eSPI/Extensions/Smooth_font.h \
  .pio/libdeps/nodemcu-32s/TFT_eSPI/Extensions/Button.h \
  .pio/libdeps/nodemcu-32s/TFT_eSPI/Extensions/Sprite.h \
  .pio/libdeps/nodemcu-32s/TFT_eSPI/Processors/TFT_eSPI_ESP32.c \
  .pio/libdeps/nodemcu-32s/TFT_eSPI/TFT_Drivers/ST7789_Init.h \
  .pio/libdeps/nodemcu-32s/TFT_eSPI/TFT_Drivers/ST7789_Rotation.h \
+ .pio/libdeps/nodemcu-32s/TFT_eSPI/Extensions/Touch.cpp \
  .pio/libdeps/nodemcu-32s/TFT_eSPI/Extensions/Button.cpp \
  .pio/libdeps/nodemcu-32s/TFT_eSPI/Extensions/Sprite.cpp \
  .pio/libdeps/nodemcu-32s/TFT_eSPI/Extensions/Smooth_font.cpp

@@ -1,5 +1,6 @@
 .pio/build/nodemcu-32s/FrameworkArduino/esp32-hal-i2c-slave.c.o: \
  /Users/ray/.platformio/packages/framework-arduinoespressif32/cores/esp32/esp32-hal-i2c-slave.c \
+ src/config/TFTConfig.h \
  /Users/ray/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/esp_common/include/esp_attr.h \
  /Users/ray/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/esp_rom/include/esp32/rom/gpio.h \
  /Users/ray/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/soc/esp32/include/soc/gpio_sig_map.h \

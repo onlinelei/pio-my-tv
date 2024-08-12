@@ -1,5 +1,5 @@
 .pio/build/nodemcu-32s/libe3b/Button2/Button2.cpp.o: \
- .pio/libdeps/nodemcu-32s/Button2/src/Button2.cpp \
+ .pio/libdeps/nodemcu-32s/Button2/src/Button2.cpp src/config/TFTConfig.h \
  .pio/libdeps/nodemcu-32s/Button2/src/Button2.h \
  /Users/ray/.platformio/packages/framework-arduinoespressif32/cores/esp32/Arduino.h \
  /Users/ray/.platformio/packages/framework-arduinoespressif32/cores/esp32/esp_arduino_version.h \

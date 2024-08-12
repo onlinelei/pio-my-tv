@@ -1,5 +1,6 @@
 .pio/build/nodemcu-32s/FrameworkArduino/IPv6Address.cpp.o: \
  /Users/ray/.platformio/packages/framework-arduinoespressif32/cores/esp32/IPv6Address.cpp \
+ src/config/TFTConfig.h \
  /Users/ray/.platformio/packages/framework-arduinoespressif32/cores/esp32/Arduino.h \
  /Users/ray/.platformio/packages/framework-arduinoespressif32/cores/esp32/esp_arduino_version.h \
  /Users/ray/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/freertos/include/freertos/FreeRTOS.h \

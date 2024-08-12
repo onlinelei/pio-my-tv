@@ -1,5 +1,6 @@
 .pio/build/nodemcu-32s/libf21/SPIFFS/SPIFFS.cpp.o: \
  /Users/ray/.platformio/packages/framework-arduinoespressif32/libraries/SPIFFS/src/SPIFFS.cpp \
+ src/config/TFTConfig.h \
  /Users/ray/.platformio/packages/framework-arduinoespressif32/libraries/FS/src/vfs_api.h \
  /Users/ray/.platformio/packages/framework-arduinoespressif32/libraries/FS/src/FS.h \
  /Users/ray/.platformio/packages/framework-arduinoespressif32/cores/esp32/Arduino.h \
