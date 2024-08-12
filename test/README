@@ -9,3 +9,17 @@ in the development cycle.
 
 More information about PlatformIO Unit Testing:
 - https://docs.platformio.org/en/latest/advanced/unit-testing/index.html
+
+
+
+# 一、项目
+
+## 1.1 项目介绍
+
+本项目是基于 PlatformIO、Esp32 
+
+# 二、TODO
+
+## 2.1 引入 lvgl
+
+## 2.2 引入 单元测试
