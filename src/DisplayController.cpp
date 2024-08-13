@@ -8,6 +8,8 @@ DisplayController::DisplayController()
     : tft(TFT_eSPI()), clk(&tft) {}
 
 void DisplayController::init() {
+    pinMode(TFT_BL, OUTPUT);
+    analogWrite(TFT_BL, 255);
     Serial.println("Initializing TFT...");
     tft.init();
     Serial.println("TFT initialized.");
