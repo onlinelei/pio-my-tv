@@ -87,7 +87,6 @@
  /Users/ray/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/log/include/esp_log_internal.h \
  /Users/ray/.platformio/packages/framework-arduinoespressif32/cores/esp32/esp32-hal-matrix.h \
  /Users/ray/.platformio/packages/framework-arduinoespressif32/cores/esp32/esp32-hal-uart.h \
- /Users/ray/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/hal/include/hal/uart_types.h \
  /Users/ray/.platformio/packages/framework-arduinoespressif32/cores/esp32/esp32-hal-gpio.h \
  /Users/ray/.platformio/packages/framework-arduinoespressif32/cores/esp32/esp32-hal-touch.h \
  /Users/ray/.platformio/packages/framework-arduinoespressif32/cores/esp32/esp32-hal-dac.h \
@@ -125,7 +124,6 @@
  /Users/ray/.platformio/packages/framework-arduinoespressif32/cores/esp32/IPAddress.h \
  /Users/ray/.platformio/packages/framework-arduinoespressif32/cores/esp32/HardwareSerial.h \
  /Users/ray/.platformio/packages/framework-arduinoespressif32/cores/esp32/HWCDC.h \
- /Users/ray/.platformio/packages/framework-arduinoespressif32/cores/esp32/USBCDC.h \
  /Users/ray/.platformio/packages/framework-arduinoespressif32/cores/esp32/Esp.h \
  /Users/ray/.platformio/packages/framework-arduinoespressif32/cores/esp32/Arduino.h \
  /Users/ray/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/spi_flash/include/esp_partition.h \
@@ -136,4 +134,5 @@
  /Users/ray/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/spi_flash/include/esp_spi_flash_counters.h \
  /Users/ray/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/esp_hw_support/include/soc/esp32/spiram.h \
  /Users/ray/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/driver/include/driver/uart.h \
- /Users/ray/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/esp_ringbuf/include/freertos/ringbuf.h
+ /Users/ray/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/esp_ringbuf/include/freertos/ringbuf.h \
+ /Users/ray/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/hal/include/hal/uart_types.h

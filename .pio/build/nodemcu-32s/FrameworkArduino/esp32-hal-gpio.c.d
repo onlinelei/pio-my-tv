@@ -84,7 +84,6 @@
  /Users/ray/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/log/include/esp_log_internal.h \
  /Users/ray/.platformio/packages/framework-arduinoespressif32/cores/esp32/esp32-hal-matrix.h \
  /Users/ray/.platformio/packages/framework-arduinoespressif32/cores/esp32/esp32-hal-uart.h \
- /Users/ray/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/hal/include/hal/uart_types.h \
  /Users/ray/.platformio/packages/framework-arduinoespressif32/cores/esp32/esp32-hal-touch.h \
  /Users/ray/.platformio/packages/framework-arduinoespressif32/cores/esp32/esp32-hal-dac.h \
  /Users/ray/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/driver/include/driver/gpio.h \

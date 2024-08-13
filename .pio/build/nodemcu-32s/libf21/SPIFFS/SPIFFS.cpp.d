@@ -87,7 +87,6 @@
  /Users/ray/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/log/include/esp_log_internal.h \
  /Users/ray/.platformio/packages/framework-arduinoespressif32/cores/esp32/esp32-hal-matrix.h \
  /Users/ray/.platformio/packages/framework-arduinoespressif32/cores/esp32/esp32-hal-uart.h \
- /Users/ray/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/hal/include/hal/uart_types.h \
  /Users/ray/.platformio/packages/framework-arduinoespressif32/cores/esp32/esp32-hal-gpio.h \
  /Users/ray/.platformio/packages/framework-arduinoespressif32/variants/nodemcu-32s/pins_arduino.h \
  /Users/ray/.platformio/packages/framework-arduinoespressif32/cores/esp32/esp32-hal-touch.h \
@@ -126,7 +125,6 @@
  /Users/ray/.platformio/packages/framework-arduinoespressif32/cores/esp32/IPAddress.h \
  /Users/ray/.platformio/packages/framework-arduinoespressif32/cores/esp32/HardwareSerial.h \
  /Users/ray/.platformio/packages/framework-arduinoespressif32/cores/esp32/HWCDC.h \
- /Users/ray/.platformio/packages/framework-arduinoespressif32/cores/esp32/USBCDC.h \
  /Users/ray/.platformio/packages/framework-arduinoespressif32/cores/esp32/Esp.h \
  /Users/ray/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/spi_flash/include/esp_partition.h \
  /Users/ray/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/spi_flash/include/esp_flash.h \

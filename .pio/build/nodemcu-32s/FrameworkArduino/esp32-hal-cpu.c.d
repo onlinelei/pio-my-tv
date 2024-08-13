@@ -96,7 +96,6 @@
  /Users/ray/.platformio/packages/framework-arduinoespressif32/cores/esp32/esp32-hal-log.h \
  /Users/ray/.platformio/packages/framework-arduinoespressif32/cores/esp32/esp32-hal-matrix.h \
  /Users/ray/.platformio/packages/framework-arduinoespressif32/cores/esp32/esp32-hal-uart.h \
- /Users/ray/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/hal/include/hal/uart_types.h \
  /Users/ray/.platformio/packages/framework-arduinoespressif32/cores/esp32/esp32-hal-gpio.h \
  /Users/ray/.platformio/packages/framework-arduinoespressif32/variants/nodemcu-32s/pins_arduino.h \
  /Users/ray/.platformio/packages/framework-arduinoespressif32/cores/esp32/esp32-hal-touch.h \
