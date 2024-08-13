@@ -8,7 +8,6 @@
 
 #include "config/SystemConfig.h"
 
-#define LCD_BL_PIN 22
 DisplayController display;
 ButtonHandler buttons(15, 13);
 Animation animation(display);
@@ -49,16 +48,11 @@ void esp_reset(Button2 &btn)
 
 
 
-
-
 // ==========  主程序 ==============
 
 void setup()
 {
     Serial.begin(115200);
-
-    pinMode(LCD_BL_PIN, OUTPUT);
-    analogWrite(LCD_BL_PIN, 255);
 
     display.init();
     buttons.init();
