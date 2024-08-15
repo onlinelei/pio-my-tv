@@ -1,8 +1,10 @@
-
 #ifndef DISPLAYCONTROLLER_H
 #define DISPLAYCONTROLLER_H
 
+#define TFT_BL 22  // 默认值
+
 #include <TFT_eSPI.h>
+
 
 class DisplayController {
 public:
