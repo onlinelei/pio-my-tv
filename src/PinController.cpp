@@ -1,8 +1,6 @@
-#include "PinController.h"
-#include "config/TFTConfig.h"
-
 #include <Arduino.h>
 
+#include "PinController.h"
 
 PinController::PinController() {}
 

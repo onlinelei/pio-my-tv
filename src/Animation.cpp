@@ -1,4 +1,3 @@
-// Animation.cpp
 #include "Animation.h"
 
 Animation::Animation(DisplayController& display)

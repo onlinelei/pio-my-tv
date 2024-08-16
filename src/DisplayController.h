@@ -5,16 +5,18 @@
 
 #include <TFT_eSPI.h>
 
+#include "PinController.h"
 
 class DisplayController {
 public:
-    DisplayController();
+    DisplayController(PinController& pinController);
     void init();
     void drawLoadingScreen(byte loadNum, uint16_t bgColor);
 
 private:
     TFT_eSPI tft;
     TFT_eSprite clk;
+    PinController& pinController; 
     uint16_t bgColor, whiteColor, greenColor;
     void createColors();
 };

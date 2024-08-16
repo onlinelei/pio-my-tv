@@ -1,12 +1,13 @@
-#include "DisplayController.h"
 #include <Arduino.h>
 
-DisplayController::DisplayController()
-    : tft(TFT_eSPI()), clk(&tft) {}
+#include "DisplayController.h"
+#include "PinController.h"
+
+DisplayController::DisplayController(PinController& pinController)
+    : tft(TFT_eSPI()), clk(&tft),  pinController(pinController){}
 
 void DisplayController::init() {
-    pinMode(TFT_BL, OUTPUT);
-    analogWrite(TFT_BL, 255);
+    pinController.tftInitBackLightPin(TFT_BL);
     Serial.println("Initializing TFT...");
     tft.init();
     Serial.println("TFT initialized.");

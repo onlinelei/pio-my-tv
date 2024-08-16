@@ -1,4 +1,3 @@
-// ButtonHandler.cpp
 #include "ButtonHandler.h"
 
 ButtonHandler::ButtonHandler(int pinRight, int pinLeft)

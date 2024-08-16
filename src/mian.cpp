@@ -5,9 +5,11 @@
 #include "DisplayController.h"
 #include "ButtonHandler.h"
 #include "Animation.h"
+#include "PinController.h"
 #include "ThreadController.h"
 
-DisplayController display;
+PinController pinController;
+DisplayController display(pinController);
 ButtonHandler buttons(15, 13);
 Animation animation(display);
 ThreadController threadController;
