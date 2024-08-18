@@ -7,7 +7,7 @@ class Animation {
 public:
     Animation(DisplayController& display);
     void lodingPage();
-    void runStarField(); // 新增运行星空的函数
+    void runStarField(int numStars, int size, uint16_t color);
 
 private:
     DisplayController& display;

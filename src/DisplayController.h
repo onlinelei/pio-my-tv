@@ -4,6 +4,7 @@
 #define TFT_BL 22  // 默认值
 
 #include <TFT_eSPI.h>
+#include <vector> // 添加 std::vector 的头文件
 
 #include "PinController.h"
 
@@ -12,8 +13,7 @@ public:
     DisplayController(PinController& pinController);
     void init();
     void drawLoadingScreen(byte loadNum);
-    void drawStarField(); // 新增绘制星空的函数
-    void updateStarField(); // 新增更新星空的函数
+    void updateStarField(int numStars, int size, uint16_t color);
 
 private:
     TFT_eSPI tft;
@@ -22,11 +22,10 @@ private:
     struct Star {
         int x, y;
         int size;
-        int brightness;
+        uint16_t color;
         int speedX, speedY;
     };
-    Star stars[100];
-    void initStars();
+    std::vector<Star> stars;
 };
 
 #endif // DISPLAYCONTROLLER_H

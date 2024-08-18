@@ -3,20 +3,32 @@
 
 #include <Thread.h>
 #include <StaticThreadController.h>
+#include "DisplayController.h"
+#include "ButtonHandler.h"
+#include "Animation.h"
+#include "PinController.h"
 
 class ThreadController {
 public:
-    ThreadController();
+    ThreadController(PinController& pinController, DisplayController& display, Animation& animation, ButtonHandler& buttons);
     void init();
     void run();
 
 private:
-    Thread reflash_time;
-    Thread reflash_Banner;
-    StaticThreadController<2> controller;
+    PinController& pinController;
+    DisplayController& display;
+    Animation& animation;
+    ButtonHandler& buttons;
 
-    static void reflashTime();
-    static void reflashBanner();
+    Thread initThread;
+    Thread reflashTime;
+    Thread reflashBanner;
+
+    StaticThreadController<3> controller;
+
+    void initThreadFunc();
+    void reflashTimeFunc();
+    void reflashBannerFunc();
 };
 
 #endif // THREAD_CONTROLLER_H

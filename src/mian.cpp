@@ -2,35 +2,47 @@
 #include <Thread.h>
 #include <StaticThreadController.h> //协程控制
 
-#include "DisplayController.h"
-#include "ButtonHandler.h"
-#include "Animation.h"
-#include "PinController.h"
 #include "ThreadController.h"
 
-PinController pinController;
-DisplayController display(pinController);
-Animation animation(display);
 
-ButtonHandler buttons(15, 13);
-ThreadController threadController;
+static PinController pinController;
+static ButtonHandler buttons(15, 13);
+static DisplayController display(pinController);
+static Animation animation(display);
+
+ThreadController threadController(pinController, display, animation, buttons);
+
+uint16_t colors[] = {
+        TFT_BLACK, TFT_NAVY, TFT_DARKGREEN, TFT_DARKCYAN, TFT_MAROON, TFT_PURPLE,
+        TFT_OLIVE, TFT_LIGHTGREY, TFT_DARKGREY, TFT_BLUE, TFT_GREEN, TFT_CYAN,
+        TFT_RED, TFT_MAGENTA, TFT_YELLOW, TFT_WHITE, TFT_ORANGE, TFT_GREENYELLOW,
+        TFT_PINK
+    };
+int forSize = 100;
 
 void setup()
 {
     Serial.begin(115200);
-    buttons.init();
-    threadController.init();
 
+    pinController.init();
+    buttons.init();
     display.init();
-    animation.lodingPage();
-    animation.runStarField(); // 调用绘制星空的函数
+    threadController.init();
+    
 }
 
 void loop()
 {
-    Serial.println("My First PIO Project!");
     threadController.run();
 
-    animation.runStarField(); // 每秒更新一次星空
-    delay(50);
+    // animation.lodingPage();
+    int size = 300;
+    if(forSize <= 0) {
+        forSize = 100;
+        size = random(100) + 300;
+    }
+    
+    animation.runStarField(size, 3, colors[random(16)]); // 调用绘制星空的函数    
+    forSize -= 1;
+    delay(100);
 }

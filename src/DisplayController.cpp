@@ -5,7 +5,6 @@
 
 DisplayController::DisplayController(PinController& pinController)
     : tft(TFT_eSPI()), sprite(&tft), pinController(pinController) {
-    initStars();
 }
 
 void DisplayController::init() {
@@ -36,44 +35,50 @@ void DisplayController::drawLoadingScreen(byte loadNum) {
     sprite.pushSprite(20, 120);
 }
 
-void DisplayController::drawStarField() {
-    
-    for (int i = 0; i < 100; i++) {
-        sprite.fillCircle(stars[i].x, stars[i].y, stars[i].size, sprite.color565(stars[i].brightness, stars[i].brightness, stars[i].brightness));
-    }
-}
+void DisplayController::updateStarField(int numStars, int size, uint16_t color) {
+    if (stars.size() != numStars){
+        stars.resize(numStars); // 调整 stars 的大小
+        for (int i = 0; i < numStars; i++) {
+        stars[i].x = random(0, 240);
+        stars[i].y = random(0, 240);
+        stars[i].size = random(1, size);
 
-void DisplayController::updateStarField() {
-    for (int i = 0; i < 100; i++) {
+        // 提取 RGB 分量
+        uint8_t r = (color >> 11) & 0x1F;
+        uint8_t g = (color >> 5) & 0x3F;
+        uint8_t b = color & 0x1F;
+
+        float factor = (float)random(10000) / 10000.0 * (3);
+        // 调整亮度
+        r = (uint8_t)(r * factor);
+        g = (uint8_t)(g * factor);
+        b = (uint8_t)(b * factor);
+
+        // 重新组合颜色
+        stars[i].color = ((r & 0x1F) << 11) | ((g & 0x3F) << 5) | (b & 0x1F);
+        do {
+            stars[i].speedX = random(-1, 3);
+        } while (stars[i].speedX == 0);
+        do {
+            stars[i].speedY = random(1, 3);
+        } while (stars[i].speedY == 0);
+    }
+    }
+    for (int i = 0; i < numStars; i++) {
         stars[i].x += stars[i].speedX;
         stars[i].y += stars[i].speedY;
 
-        if (stars[i].x < 0 || stars[i].x >= 240) {
-            stars[i].x = random(0, 240);
-            stars[i].y = random(0, 240);
-            stars[i].speedX = random(-1, 2);
-            stars[i].speedY = random(-1, 2);
-        }
-        if (stars[i].y < 0 || stars[i].y >= 240) {
-            stars[i].x = random(0, 240);
-            stars[i].y = random(0, 240);
-            stars[i].speedX = random(-1, 2);
-            stars[i].speedY = random(-1, 2);
-        }
+        // 使用三元运算符简化位置更新逻辑
+        stars[i].x = (stars[i].x < 0) ? 240 : (stars[i].x > 240) ? 0 : stars[i].x;
+        stars[i].y = (stars[i].y < 0) ? 240 : (stars[i].y > 240) ? 0 : stars[i].y;
     }
     sprite.fillSprite(TFT_BLACK);
-    drawStarField();
-    sprite.pushSprite(0, 0); // 将缓冲区内容推送到TFT屏幕
-}
-
-
-void DisplayController::initStars() {
-    for (int i = 0; i < 100; i++) {
-        stars[i].x = random(0, 240);
-        stars[i].y = random(0, 240);
-        stars[i].size = random(1, 3);
-        stars[i].brightness = random(128, 255);
-        stars[i].speedX = random(-1, 2);
-        stars[i].speedY = random(-1, 2);
+    for (int i = 0; i < numStars; i++) {
+        if (stars[i].size < 2) {
+            sprite.drawPixel(stars[i].x, stars[i].y, stars[i].color); // 绘制一个点
+        } else {
+            sprite.fillCircle(stars[i].x, stars[i].y, stars[i].size, stars[i].color); // 绘制一个圆
+        }
     }
+    sprite.pushSprite(0, 0); // 将缓冲区内容推送到TFT屏幕
 }

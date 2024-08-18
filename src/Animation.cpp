@@ -11,6 +11,6 @@ void Animation::lodingPage() {
     }
 }
 
-void Animation::runStarField() {
-    display.updateStarField();
+void Animation::runStarField(int numStars, int size, uint16_t color) {
+    display.updateStarField(numStars, size, color); 
 }
