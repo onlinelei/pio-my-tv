@@ -37,12 +37,14 @@ void loop()
 
     // animation.lodingPage();
     int size = 300;
+    uint16_t color = TFT_DARKGREEN;
     if(forSize <= 0) {
         forSize = 100;
         size = random(100) + 300;
+        colors[random(16)]
     }
     
-    animation.runStarField(size, 3, colors[random(16)]); // 调用绘制星空的函数    
+    animation.runStarField(size, 3, ); // 调用绘制星空的函数    
     forSize -= 1;
-    delay(100);
+    delay(50);
 }
