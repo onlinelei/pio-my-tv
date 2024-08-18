@@ -3,15 +3,14 @@
 Animation::Animation(DisplayController& display)
     : display(display), loadNum(1) {}
 
-void Animation::run() {
-    for (size_t i = 0; i < 100; i++) {
-        display.drawLoadingScreen(loadNum, 0x0000);
-        delay(30);
-    }
-
+void Animation::lodingPage() {
     while (loadNum < 194) {
-        display.drawLoadingScreen(loadNum, 0x0000);
+        display.drawLoadingScreen(loadNum);
         delay(100);
         loadNum += 1;
     }
+}
+
+void Animation::runStarField() {
+    display.updateStarField();
 }

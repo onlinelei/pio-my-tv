@@ -6,7 +6,8 @@
 class Animation {
 public:
     Animation(DisplayController& display);
-    void run();
+    void lodingPage();
+    void runStarField(); // 新增运行星空的函数
 
 private:
     DisplayController& display;

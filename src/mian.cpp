@@ -10,25 +10,27 @@
 
 PinController pinController;
 DisplayController display(pinController);
-ButtonHandler buttons(15, 13);
 Animation animation(display);
+
+ButtonHandler buttons(15, 13);
 ThreadController threadController;
 
 void setup()
 {
     Serial.begin(115200);
-
-    display.init();
     buttons.init();
-    animation.run();
     threadController.init();
 
+    display.init();
+    animation.lodingPage();
+    animation.runStarField(); // 调用绘制星空的函数
 }
 
 void loop()
 {
     Serial.println("My First PIO Project!");
-
     threadController.run();
-    delay(1000);
+
+    animation.runStarField(); // 每秒更新一次星空
+    delay(50);
 }
