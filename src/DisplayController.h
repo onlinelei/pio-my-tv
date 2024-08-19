@@ -13,7 +13,7 @@ public:
     DisplayController(PinController& pinController);
     void init();
     void drawLoadingScreen(byte loadNum);
-    void updateStarField(int numStars, int size, uint16_t color);
+    void updateStarField(int numStars, int size, int speed, uint16_t color);
 
 private:
     TFT_eSPI tft;

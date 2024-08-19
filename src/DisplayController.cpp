@@ -35,34 +35,34 @@ void DisplayController::drawLoadingScreen(byte loadNum) {
     sprite.pushSprite(20, 120);
 }
 
-void DisplayController::updateStarField(int numStars, int size, uint16_t color) {
+void DisplayController::updateStarField(int numStars, int size, int speed, uint16_t color) {
     if (stars.size() != numStars){
         stars.resize(numStars); // 调整 stars 的大小
         for (int i = 0; i < numStars; i++) {
-        stars[i].x = random(0, 240);
-        stars[i].y = random(0, 240);
-        stars[i].size = random(1, size);
+            stars[i].x = random(0, 240);
+            stars[i].y = random(0, 240);
+            stars[i].size = random(1, size);
 
-        // 提取 RGB 分量
-        uint8_t r = (color >> 11) & 0x1F;
-        uint8_t g = (color >> 5) & 0x3F;
-        uint8_t b = color & 0x1F;
+            // 提取 RGB 分量
+            uint8_t r = (color >> 11) & 0x1F;
+            uint8_t g = (color >> 5) & 0x3F;
+            uint8_t b = color & 0x1F;
 
-        float factor = (float)random(10000) / 10000.0 * (3);
-        // 调整亮度
-        r = (uint8_t)(r * factor);
-        g = (uint8_t)(g * factor);
-        b = (uint8_t)(b * factor);
+            float factor = (float)random(10000) / 10000.0 * (3);
+            // 调整亮度
+            r = (uint8_t)(r * factor);
+            g = (uint8_t)(g * factor);
+            b = (uint8_t)(b * factor);
 
-        // 重新组合颜色
-        stars[i].color = ((r & 0x1F) << 11) | ((g & 0x3F) << 5) | (b & 0x1F);
-        do {
-            stars[i].speedX = random(-1, 3);
-        } while (stars[i].speedX == 0);
-        do {
-            stars[i].speedY = random(1, 3);
-        } while (stars[i].speedY == 0);
-    }
+            // 重新组合颜色
+            stars[i].color = ((r & 0x1F) << 11) | ((g & 0x3F) << 5) | (b & 0x1F);
+            do {
+                stars[i].speedX = random(-speed, speed);
+            } while (stars[i].speedX == 0);
+            do {
+                stars[i].speedY = random(-speed, speed);
+            } while (stars[i].speedY == 0);
+        }
     }
     for (int i = 0; i < numStars; i++) {
         stars[i].x += stars[i].speedX;

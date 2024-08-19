@@ -12,15 +12,11 @@ static Animation animation(display);
 
 ThreadController threadController(pinController, display, animation, buttons);
 
-uint16_t colors[] = {
-        TFT_BLACK, TFT_NAVY, TFT_DARKGREEN, TFT_DARKCYAN, TFT_MAROON, TFT_PURPLE,
-        TFT_OLIVE, TFT_LIGHTGREY, TFT_DARKGREY, TFT_BLUE, TFT_GREEN, TFT_CYAN,
-        TFT_RED, TFT_MAGENTA, TFT_YELLOW, TFT_WHITE, TFT_ORANGE, TFT_GREENYELLOW,
-        TFT_PINK
-    };
-int forSize = 100;
-int size = 300;
-uint16_t color = TFT_DARKGREEN;
+int tempNumStars = 300;
+int tempSize = 3;
+uint16_t tempColor = TFT_RED;
+int tempCount = 100;
+int speed = 5;
 
 void setup()
 {
@@ -35,16 +31,10 @@ void setup()
 
 void loop()
 {
-    threadController.run();
+    // threadController.run();
 
     // animation.lodingPage();
-    if(forSize <= 0) {
-        forSize = 100;
-        size = random(100) + 300;
-        color = colors[random(16)];
-    }
+    animation.runStarFieldAuto(&tempNumStars, &tempSize, &speed, &tempColor, &tempCount);
 
-    animation.runStarField(size, 3, color); // 调用绘制星空的函数    
-    forSize -= 1;
-    delay(50);
+    delay(20);
 }
