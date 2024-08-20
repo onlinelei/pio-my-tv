@@ -1,0 +1,12 @@
+.pio
+.vscode
+include
+lib
+simulator
+
+
+.git
+.gitignore
+plan.drawio
+platformio.ini
+README.md

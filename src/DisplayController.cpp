@@ -3,12 +3,16 @@
 #include "DisplayController.h"
 #include "PinController.h"
 
-DisplayController::DisplayController(PinController& pinController)
-    : tft(TFT_eSPI()), sprite(&tft), pinController(pinController) {
+DisplayController::DisplayController()
+    : tft(TFT_eSPI()), sprite(&tft)
+{
+}
+DisplayController::~DisplayController()
+{
 }
 
 void DisplayController::init() {
-    pinController.tftInitBackLightPin(TFT_BL);
+    PinController::getInstance().tftInitBackLightPin(TFT_BL);
     Serial.println("Initializing TFT...");
     tft.init();
     Serial.println("TFT initialized.");
@@ -22,8 +26,8 @@ void DisplayController::init() {
     sprite.createSprite(240, 240);
 }
 
-void DisplayController::drawLoadingScreen(byte loadNum) {
-    sprite.createSprite(200, 100);
+void DisplayController::drawLoadingScreen(byte loadNum)
+{
     sprite.fillSprite(TFT_BLACK);
     sprite.drawRoundRect(0, 0, 200, 16, 8, TFT_WHITE);
     sprite.fillRoundRect(3, 3, loadNum, 10, 5, TFT_WHITE);

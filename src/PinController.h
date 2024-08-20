@@ -5,12 +5,20 @@
 
 class PinController {
 public:
-    PinController();
+    static PinController &getInstance()
+    {
+        static PinController instance;
+        return instance;
+    }
+
     void init();
-    void tftInitBackLightPin(uint16_t pin); 
+    void tftInitBackLightPin(uint16_t pin);
 
 private:
-    
+    PinController();
+    ~PinController();
+    PinController(const PinController &) = delete;            // 禁用拷贝构造函数
+    PinController &operator=(const PinController &) = delete; // 禁用赋值操作符
 };
 
 #endif // PINCONTROLLER_H

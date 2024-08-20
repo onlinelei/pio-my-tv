@@ -1,16 +1,25 @@
-// ButtonHandler.h
 #ifndef BUTTONHANDLER_H
 #define BUTTONHANDLER_H
 
 #include <Button2.h>
 
-class ButtonHandler {
+class ButtonHandler
+{
 public:
-    ButtonHandler(int pinRight, int pinLeft);
-    void init();
-    void update();
+    static ButtonHandler &getInstance()
+    {
+        static ButtonHandler instance;
+        return instance;
+    }
+    void init(int pinRight, int pinLeft);
+    void run();
 
 private:
+    ButtonHandler();
+    ~ButtonHandler();
+    ButtonHandler(const ButtonHandler &) = delete;
+    ButtonHandler &operator=(const ButtonHandler &) = delete;
+
     Button2 buttonRight;
     Button2 buttonLeft;
 

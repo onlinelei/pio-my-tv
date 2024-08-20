@@ -3,32 +3,32 @@
 
 #include <Thread.h>
 #include <StaticThreadController.h>
-#include "DisplayController.h"
-#include "ButtonHandler.h"
-#include "Animation.h"
-#include "PinController.h"
 
 class ThreadController {
 public:
-    ThreadController(PinController& pinController, DisplayController& display, Animation& animation, ButtonHandler& buttons);
+    static ThreadController &getInstance()
+    {
+        static ThreadController instance;
+        return instance;
+    }
     void init();
     void run();
 
 private:
-    PinController& pinController;
-    DisplayController& display;
-    Animation& animation;
-    ButtonHandler& buttons;
+    ThreadController();
+    ~ThreadController();
+    ThreadController(const ThreadController &) = delete;
+    ThreadController &operator=(const ThreadController &) = delete;
 
-    Thread initThread;
-    Thread reflashTime;
-    Thread reflashBanner;
+    Thread initThread = Thread(staticInitThreadFunc);
+    Thread reflashTime = Thread(staticReflashTimeFunc);
+    Thread reflashBanner = Thread(staticReflashBannerFunc);
 
     StaticThreadController<3> controller;
 
-    void initThreadFunc();
-    void reflashTimeFunc();
-    void reflashBannerFunc();
+    static void staticInitThreadFunc();
+    static void staticReflashTimeFunc();
+    static void staticReflashBannerFunc();
 };
 
 #endif // THREAD_CONTROLLER_H

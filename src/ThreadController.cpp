@@ -1,37 +1,41 @@
+#include <Arduino.h>
+
 #include "ThreadController.h"
+#include "ButtonHandler.h"
+#include "Animation.h"
 
-ThreadController::ThreadController(PinController& pinController, DisplayController& display, Animation& animation, ButtonHandler& buttons)
-    : pinController(pinController),
-      display(display),
-      animation(animation),
-      buttons(buttons),
-      controller(&initThread, &reflashTime, &reflashBanner) {
+ThreadController::ThreadController()
+    : initThread(ThreadController::staticInitThreadFunc, 100),
+      reflashTime(ThreadController::staticReflashTimeFunc, 20),
+      reflashBanner(ThreadController::staticReflashBannerFunc, 2000),
+      controller(&initThread, &reflashTime, &reflashBanner)
+{
 }
 
-void ThreadController::init() {
-    // initThread.setInterval(100); // 设置初始化任务的间隔时间
-    // initThread.onRun([this]() { initThreadFunc(); }); // 使用 lambda 表达式
-
-    // reflashTime.setInterval(300); // 设置所需间隔 300毫秒
-    // reflashTime.onRun([this]() { reflashTimeFunc(); }); // 使用 lambda 表达式
-
-    // reflashBanner.setInterval(2 * 1000); // 设置所需间隔 2秒
-    // reflashBanner.onRun([this]() { reflashBannerFunc(); }); // 使用 lambda 表达式
+ThreadController::~ThreadController()
+{
 }
 
-void ThreadController::run() {
+void ThreadController::init()
+{
+    // 初始化代码已经在构造函数中完成
+}
+
+void ThreadController::run()
+{
     controller.run();
 }
 
-void ThreadController::initThreadFunc() {
-    // 初始化线程的实现
-    animation.lodingPage();
+void ThreadController::staticInitThreadFunc()
+{
+    // ButtonHandler::getInstance().init(3, 4);
 }
 
-void ThreadController::reflashTimeFunc() {
-    // reflashTime 线程的实现
+void ThreadController::staticReflashTimeFunc()
+{
+    Animation::getInstance().runStarFieldAuto();
 }
 
-void ThreadController::reflashBannerFunc() {
-    // reflashBanner 线程的实现
+void ThreadController::staticReflashBannerFunc()
+{
 }

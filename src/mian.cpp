@@ -3,38 +3,22 @@
 #include <StaticThreadController.h> //协程控制
 
 #include "ThreadController.h"
-
-
-static PinController pinController;
-static ButtonHandler buttons(15, 13);
-static DisplayController display(pinController);
-static Animation animation(display);
-
-ThreadController threadController(pinController, display, animation, buttons);
-
-int tempNumStars = 300;
-int tempSize = 3;
-uint16_t tempColor = TFT_RED;
-int tempCount = 100;
-int speed = 5;
+#include "PinController.h"
+#include "ButtonHandler.h"
+#include "DisplayController.h"
+#include "Animation.h"
 
 void setup()
 {
     Serial.begin(115200);
-
-    pinController.init();
-    buttons.init();
-    display.init();
-    threadController.init();
-    
+    PinController::getInstance().init();
+    ButtonHandler::getInstance().init(15, 13);
+    DisplayController::getInstance().init();
+    ThreadController::getInstance().init();
 }
 
 void loop()
 {
-    // threadController.run();
-
+    ThreadController::getInstance().run();
     // animation.lodingPage();
-    animation.runStarFieldAuto(&tempNumStars, &tempSize, &speed, &tempColor, &tempCount);
-
-    delay(20);
 }

@@ -5,13 +5,21 @@
 
 class Animation {
 public:
-    Animation(DisplayController& display);
+    static Animation &getInstance()
+    {
+        static Animation instance;
+        return instance;
+    }
     void lodingPage();
     void runStarField(int numStars, int size, int speed, uint16_t color);
-    void runStarFieldAuto(int* numStars, int* size, int* speed, uint16_t* color, int* count);
+    void runStarFieldAuto();
 
 private:
-    DisplayController& display;
+    Animation();
+    ~Animation();
+    Animation(const Animation &) = delete;
+    Animation &operator=(const Animation &) = delete;
+
     byte loadNum;
 };
 

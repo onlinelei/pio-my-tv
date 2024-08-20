@@ -1,9 +1,19 @@
 #include "ButtonHandler.h"
 
-ButtonHandler::ButtonHandler(int pinRight, int pinLeft)
-    : buttonRight(Button2(pinRight)), buttonLeft(Button2(pinLeft)) {}
+ButtonHandler::ButtonHandler()
+{
+    // 构造函数中不需要初始化 buttonRight 和 buttonLeft
+}
+ButtonHandler::~ButtonHandler()
+{
+    // 构造函数中不需要初始化 buttonRight 和 buttonLeft
+}
 
-void ButtonHandler::init() {
+void ButtonHandler::init(int pinRight, int pinLeft)
+{
+    buttonRight = Button2(pinRight);
+    buttonLeft = Button2(pinLeft);
+
     buttonRight.setDoubleClickTime(500);
     buttonRight.setLongClickTime(1000);
     buttonRight.setClickHandler(rightsingleclick);
@@ -17,7 +27,8 @@ void ButtonHandler::init() {
     buttonLeft.setLongClickDetectedHandler(esp_reset);
 }
 
-void ButtonHandler::update() {
+void ButtonHandler::run()
+{
     buttonRight.loop();
     buttonLeft.loop();
 }
