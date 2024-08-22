@@ -86,3 +86,14 @@ void DisplayController::updateStarField(int numStars, int size, int speed, uint1
     }
     sprite.pushSprite(0, 0); // 将缓冲区内容推送到TFT屏幕
 }
+
+void DisplayController::drawString(String text, int x, int y, uint16_t color)
+{
+    sprite.fillSprite(TFT_BLACK);
+    sprite.setTextDatum(TL_DATUM);
+    sprite.setTextColor(TFT_GREEN, TFT_BLACK);
+    sprite.drawString(text, x, y, 2);
+    sprite.setTextColor(color, TFT_BLACK);
+    sprite.drawString(text, x, y + 10, 2);
+    sprite.pushSprite(0, 0); // 将缓冲区内容推送到TFT屏幕
+}

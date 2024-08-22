@@ -7,6 +7,7 @@
 #include "ButtonHandler.h"
 #include "DisplayController.h"
 #include "Animation.h"
+#include "WiFiManager.h"
 
 void setup()
 {
@@ -15,6 +16,7 @@ void setup()
     ButtonHandler::getInstance().init(15, 13);
     DisplayController::getInstance().init();
     ThreadController::getInstance().init();
+    WiFiManager::getInstance().init();
 }
 
 void loop()

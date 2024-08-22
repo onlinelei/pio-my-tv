@@ -3,6 +3,7 @@
 #include "ThreadController.h"
 #include "ButtonHandler.h"
 #include "Animation.h"
+#include "WiFiManager.h"
 
 ThreadController::ThreadController()
     : initThread(ThreadController::staticInitThreadFunc, 100),
@@ -33,6 +34,7 @@ void ThreadController::staticInitThreadFunc()
 
 void ThreadController::staticReflashTimeFunc()
 {
+    // WiFiManager::getInstance().connect();
     Animation::getInstance().runStarFieldAuto();
 }
 

@@ -19,6 +19,7 @@ public:
     void init();
     void drawLoadingScreen(byte loadNum);
     void updateStarField(int numStars, int size, int speed, uint16_t color);
+    void drawString(String text, int x, int y, uint16_t color);
 
 private:
     DisplayController();
