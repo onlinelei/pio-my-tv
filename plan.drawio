@@ -1,12 +1,9 @@
 <mxfile host="Electron" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.7.5 Chrome/126.0.6478.183 Electron/31.3.0 Safari/537.36" version="24.7.5">
   <diagram id="89XfGnFHcT7u-z3QIvmy" name="第 1 页">
-    <mxGraphModel dx="2131" dy="825" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2074" dy="1267" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="-xRI7YOe1w0faQ1xMYFl-12" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">
-          <mxGeometry x="60" y="900" width="750" height="90" as="geometry" />
-        </mxCell>
         <mxCell id="J2yz4jlQInwtQDWlSOpa-5" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
           <mxGeometry x="30" y="150" width="180" height="360" as="geometry" />
         </mxCell>
@@ -25,80 +22,11 @@
         <mxCell id="J2yz4jlQInwtQDWlSOpa-3" value="ButtonController" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="280" y="170" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="ag71eFYeRTpgHoGONzjH-1" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+        <mxCell id="ag71eFYeRTpgHoGONzjH-1" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
           <mxGeometry x="690" y="150" width="180" height="360" as="geometry" />
         </mxCell>
-        <mxCell id="ag71eFYeRTpgHoGONzjH-2" value="DisplayController" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+        <mxCell id="ag71eFYeRTpgHoGONzjH-2" value="DisplayController" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="720" y="170" width="120" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="-xRI7YOe1w0faQ1xMYFl-1" value="animation&lt;br&gt;service" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="70" y="910" width="60" height="70" as="geometry" />
-        </mxCell>
-        <mxCell id="-xRI7YOe1w0faQ1xMYFl-6" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">
-          <mxGeometry x="60" y="1000" width="750" height="50" as="geometry" />
-        </mxCell>
-        <mxCell id="-xRI7YOe1w0faQ1xMYFl-7" value="WIFI" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="70" y="1012.5" width="70" height="25" as="geometry" />
-        </mxCell>
-        <mxCell id="-xRI7YOe1w0faQ1xMYFl-14" value="TFT-Display" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="160" y="1012.5" width="70" height="25" as="geometry" />
-        </mxCell>
-        <mxCell id="-xRI7YOe1w0faQ1xMYFl-15" value="Button" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="240" y="1012.5" width="70" height="25" as="geometry" />
-        </mxCell>
-        <mxCell id="-xRI7YOe1w0faQ1xMYFl-16" value="..." style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="320" y="1012.5" width="70" height="25" as="geometry" />
-        </mxCell>
-        <mxCell id="-xRI7YOe1w0faQ1xMYFl-17" value="..." style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="400" y="1012.5" width="70" height="25" as="geometry" />
-        </mxCell>
-        <mxCell id="-xRI7YOe1w0faQ1xMYFl-18" value="WIFI" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="140" y="910" width="70" height="25" as="geometry" />
-        </mxCell>
-        <mxCell id="-xRI7YOe1w0faQ1xMYFl-19" value="WIFI" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="140" y="955" width="70" height="25" as="geometry" />
-        </mxCell>
-        <mxCell id="-xRI7YOe1w0faQ1xMYFl-20" value="WIFI" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="220" y="910" width="70" height="25" as="geometry" />
-        </mxCell>
-        <mxCell id="-xRI7YOe1w0faQ1xMYFl-21" value="WIFI" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="220" y="955" width="70" height="25" as="geometry" />
-        </mxCell>
-        <mxCell id="-xRI7YOe1w0faQ1xMYFl-22" value="WIFI" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="305" y="910" width="70" height="25" as="geometry" />
-        </mxCell>
-        <mxCell id="-xRI7YOe1w0faQ1xMYFl-23" value="WIFI" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="305" y="955" width="70" height="25" as="geometry" />
-        </mxCell>
-        <mxCell id="-xRI7YOe1w0faQ1xMYFl-24" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">
-          <mxGeometry x="60" y="800" width="750" height="90" as="geometry" />
-        </mxCell>
-        <mxCell id="-xRI7YOe1w0faQ1xMYFl-25" value="thread&lt;br&gt;controller" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="70" y="810" width="60" height="70" as="geometry" />
-        </mxCell>
-        <mxCell id="-xRI7YOe1w0faQ1xMYFl-26" value="WIFI" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="140" y="810" width="70" height="25" as="geometry" />
-        </mxCell>
-        <mxCell id="-xRI7YOe1w0faQ1xMYFl-27" value="WIFI" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="140" y="855" width="70" height="25" as="geometry" />
-        </mxCell>
-        <mxCell id="-xRI7YOe1w0faQ1xMYFl-28" value="WIFI" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="220" y="810" width="70" height="25" as="geometry" />
-        </mxCell>
-        <mxCell id="-xRI7YOe1w0faQ1xMYFl-29" value="WIFI" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="220" y="855" width="70" height="25" as="geometry" />
-        </mxCell>
-        <mxCell id="-xRI7YOe1w0faQ1xMYFl-30" value="WIFI" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="305" y="810" width="70" height="25" as="geometry" />
-        </mxCell>
-        <mxCell id="-xRI7YOe1w0faQ1xMYFl-31" value="WIFI" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="305" y="855" width="70" height="25" as="geometry" />
-        </mxCell>
-        <mxCell id="-xRI7YOe1w0faQ1xMYFl-32" value="main 主程序" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" parent="1" vertex="1">
-          <mxGeometry x="60" y="760" width="750" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="-xRI7YOe1w0faQ1xMYFl-37" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="-10" y="760" width="60" height="290" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

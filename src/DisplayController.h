@@ -4,7 +4,7 @@
 #include <TFT_eSPI.h>
 #include <vector>
 
-#define TFT_BL 22 // 默认值
+// #define TFT_BL 22 // 默认值
 
 #include "PinController.h"
 
@@ -20,6 +20,12 @@ public:
     void drawLoadingScreen(byte loadNum);
     void updateStarField(int numStars, int size, int speed, uint16_t color);
     void drawString(String text, int x, int y, uint16_t color);
+
+    // 添加一个公共方法来获取tft对象
+    TFT_eSPI &getTFT()
+    {
+        return tft;
+    }
 
 private:
     DisplayController();
