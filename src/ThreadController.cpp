@@ -3,7 +3,7 @@
 #include "ThreadController.h"
 #include "ButtonHandler.h"
 #include "Animation.h"
-#include "WiFiManager.h"
+#include "driver/WiFi_Singleton.h"
 
 ThreadController::ThreadController()
     : initThread(ThreadController::staticInitThreadFunc, 100),

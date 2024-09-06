@@ -12,7 +12,7 @@ DisplayController::~DisplayController()
 }
 
 void DisplayController::init() {
-    // PinController::getInstance().tftInitBackLightPin(TFT_BL);
+    PinController::getInstance().tftInitBackLightPin(TFT_BL);
     Serial.println("Initializing TFT...");
     tft.init();
     Serial.println("TFT initialized.");
