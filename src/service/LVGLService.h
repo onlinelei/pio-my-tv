@@ -2,7 +2,18 @@
 #define LVGLSERVICE_H
 
 #include <lvgl.h>
-#include "../driver/TFT_Singleton.h"
+
+#if LV_USE_TFT_ESPI
+#include <TFT_eSPI.h>
+#endif
+#include <demos/widgets/lv_demo_widgets.h>
+#include <demos/benchmark/lv_demo_benchmark.h>
+
+#if LV_USE_TFT_ESPI
+#define DRAW_BUF_SIZE (TFT_WIDTH * TFT_HEIGHT / 10 * (LV_COLOR_DEPTH / 8))
+uint32_t draw_buf[DRAW_BUF_SIZE / 4];
+#define TFT_ROTATION LV_DISPLAY_ROTATION_0
+#endif
 
 class LVGLService
 {
@@ -13,72 +24,59 @@ public:
         return instance;
     }
 
-    void init()
+    void setup()
     {
-        lv_init();
         String LVGL_Arduino = "Hello Arduino! ";
         LVGL_Arduino += String('V') + lv_version_major() + "." + lv_version_minor() + "." + lv_version_patch();
 
         Serial.println(LVGL_Arduino);
-        Serial.println("I am LVGL_Arduino");
 
-        TFT_eSPI &tft = TFT_Singleton::getInstance().getTFT();
-        tft.begin();        /* TFT init */
-        tft.setRotation(4); /* Landscape orientation, flipped */
+        lv_init();
 
-        lv_disp_draw_buf_init(&draw_buf, buf, NULL, TFT_WIDTH * TFT_HEIGHT / 10);
+        /*Set a tick source so that LVGL will know how much time elapsed. */
+        lv_tick_set_cb(my_tick);
 
-        /*Initialize the display*/
-        static lv_disp_drv_t disp_drv;
-        lv_disp_drv_init(&disp_drv);
-        /*Change the following line to your display resolution*/
-        disp_drv.hor_res = TFT_WIDTH;
-        disp_drv.ver_res = TFT_HEIGHT;
-        disp_drv.flush_cb = my_disp_flush;
-        disp_drv.draw_buf = &draw_buf;
-        lv_disp_drv_register(&disp_drv);
+        lv_display_t *disp;
+#if LV_USE_TFT_ESPI
+        /*TFT_eSPI can be enabled lv_conf.h to initialize the display in a simple way*/
+        disp = lv_tft_espi_create(TFT_WIDTH, TFT_HEIGHT, draw_buf, sizeof(draw_buf));
+        lv_display_set_rotation(disp, TFT_ROTATION);
+#else
+        /*Else create a display yourself*/
+        disp = lv_display_create(TFT_WIDTH, TFT_HEIGHT);
+        lv_display_set_flush_cb(disp, my_disp_flush);
+        lv_display_set_buffers(disp, draw_buf, NULL, sizeof(draw_buf), LV_DISPLAY_RENDER_MODE_PARTIAL);
+#endif
 
-        /*Initialize the (dummy) input device driver*/
-        static lv_indev_drv_t indev_drv;
-        lv_indev_drv_init(&indev_drv);
-        indev_drv.type = LV_INDEV_TYPE_POINTER;
-        lv_indev_drv_register(&indev_drv);
-
-        lv_obj_t *label = lv_label_create(lv_scr_act());
-        lv_label_set_text(label, "Hello Ardino and LVGL!");
+        lv_obj_t *label = lv_label_create(lv_screen_active());
+        lv_label_set_text(label, "Hello Arduino, I'm LVGL!");
         lv_obj_align(label, LV_ALIGN_CENTER, 0, 0);
+
+        // lv_demo_widgets();
+        lv_demo_benchmark();
+
+        Serial.println("Setup done");
     }
 
-    void push()
+    void loop()
     {
-        lv_timer_handler();
+        lv_timer_handler(); /* let the GUI do its work */
     }
 
 private:
     LVGLService() {}
-    ~LVGLService() {}
     LVGLService(const LVGLService &) = delete;
     LVGLService &operator=(const LVGLService &) = delete;
 
-    static void my_disp_flush(lv_disp_drv_t *disp_drv, const lv_area_t *area, lv_color_t *color_p)
+    static void my_disp_flush(lv_display_t *disp, const lv_area_t *area, uint8_t *px_map)
     {
-        uint32_t w = (area->x2 - area->x1 + 1);
-        uint32_t h = (area->y2 - area->y1 + 1);
-
-        TFT_eSPI &tft = TFT_Singleton::getInstance().getTFT();
-        tft.startWrite();
-        tft.setAddrWindow(area->x1, area->y1, w, h);
-        tft.pushColors((uint16_t *)&color_p->full, w * h, true);
-        tft.endWrite();
-
-        lv_disp_flush_ready(disp_drv);
+        lv_display_flush_ready(disp);
     }
 
-    static lv_disp_draw_buf_t draw_buf;
-    static lv_color_t buf[TFT_WIDTH * TFT_HEIGHT / 10];
+    static uint32_t my_tick(void)
+    {
+        return millis();
+    }
 };
-
-lv_disp_draw_buf_t LVGLService::draw_buf;
-lv_color_t LVGLService::buf[TFT_WIDTH * TFT_HEIGHT / 10];
 
 #endif // LVGLSERVICE_H

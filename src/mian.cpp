@@ -1,20 +1,14 @@
-/*Using LVGL with Arduino requires some extra steps:
- *Be sure to read the docs here: https://docs.lvgl.io/master/get-started/platforms/arduino.html  */
+#include <Arduino.h>
 #include "service/LVGLService.h"
 
-// ============== Main program ==============
-
-// ============== LVGL setup ==============
 void setup()
 {
     Serial.begin(115200);
-
-    LVGLService::getInstance().init();
-    Serial.println("Setup done");
+    LVGLService::getInstance().setup();
 }
 
 void loop()
 {
-    LVGLService::getInstance().push();
-    delay(5);
+    LVGLService::getInstance().loop();
+    // delay(1); // 添加延迟以避免过度占用 CPU
 }
