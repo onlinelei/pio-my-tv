@@ -1,6 +1,5 @@
 {
     "files.associations": {
-        "*.tcc": "cpp",
-        "screens.h": "c"
+        "vector": "cpp"
     }
 }
