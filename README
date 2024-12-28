@@ -24,3 +24,35 @@ More information about PlatformIO Unit Testing:
 
 ## 2.2 引入 单元测试
 
+
+# 三、硬件
+## 3.1 屏幕
+```
+	; 1元点阵屏幕
+	-D TFT_WIDTH=128
+	-D TFT_HEIGHT=128
+	-D TFT_MOSI=32
+	-D TFT_SCLK=33
+	-D TFT_DC=12
+	-D TFT_RST=21
+	-D TFT_BL=22
+	-D TOUCH_CS=-1
+```
+
+
+## 点亮程序
+```
+// 引脚定义
+1. 3.3
+2. RES
+3. GND
+5. SDA
+6. DC
+7. SCL
+8. CS
+11. LED
+
+
+
+```
+
