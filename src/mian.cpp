@@ -2,6 +2,10 @@
 #include "service/LVGLService.h"
 #include "ui/screens.h"
 #include "ui/ui.h"
+#include "driver/WiFi_Singleton.h"
+#include "service/MemoryMonitor.h"
+
+MemoryMonitor memoryMonitor;
 
 void setup()
 {
@@ -14,11 +18,21 @@ void setup()
     // create_screens();
     // tick_screen(0);
     ui_init();
+
+    // 打印初始内存使用情况
+    Serial.println("Initial Memory Usage:");
+    memoryMonitor.printMemoryUsage();
+
+    // 初始化 WiFi（示例代码）
+    WiFi_Singleton::getInstance().init();
+
+    // 打印 WiFi 连接后的内存使用情况
+    Serial.println("Memory Usage after WiFi connection:");
+    memoryMonitor.printMemoryUsage();
 }
 
 void loop()
 {
     ui_tick();
     LVGLService::getInstance().loop();
-    // delay(1); // 添加延迟以避免过度占用 CPU
 }
