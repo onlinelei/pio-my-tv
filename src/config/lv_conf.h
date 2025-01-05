@@ -473,9 +473,9 @@
 #define LV_FONT_MONTSERRAT_14 1
 #define LV_FONT_MONTSERRAT_16 0
 #define LV_FONT_MONTSERRAT_18 0
-#define LV_FONT_MONTSERRAT_20 1
+#define LV_FONT_MONTSERRAT_20 0
 #define LV_FONT_MONTSERRAT_22 1
-#define LV_FONT_MONTSERRAT_24 1
+#define LV_FONT_MONTSERRAT_24 0
 #define LV_FONT_MONTSERRAT_26 0
 #define LV_FONT_MONTSERRAT_28 0
 #define LV_FONT_MONTSERRAT_30 0
@@ -569,7 +569,7 @@
 
 #define LV_WIDGETS_HAS_DEFAULT_VALUE  1
 
-#define LV_USE_ANIMIMG    1
+#define LV_USE_ANIMIMG    0      /* 禁用动画图像组件 */
 
 #define LV_USE_ARC        1
 
@@ -579,7 +579,7 @@
 
 #define LV_USE_BUTTONMATRIX  1
 
-#define LV_USE_CALENDAR   1
+#define LV_USE_CALENDAR   0      /* 禁用日历组件 */
 #if LV_USE_CALENDAR
     #define LV_CALENDAR_WEEK_STARTS_MONDAY 0
     #if LV_CALENDAR_WEEK_STARTS_MONDAY
@@ -596,7 +596,7 @@
 
 #define LV_USE_CANVAS     1
 
-#define LV_USE_CHART      1
+#define LV_USE_CHART      0      /* 禁用图表组件 */
 
 #define LV_USE_CHECKBOX   1
 
@@ -606,9 +606,9 @@
 
 #define LV_USE_IMAGEBUTTON     1
 
-#define LV_USE_KEYBOARD   1
+#define LV_USE_KEYBOARD   1      /* 禁用键盘组件 */
 
-#define LV_USE_LABEL      1
+#define LV_USE_LABEL      1 
 #if LV_USE_LABEL
     #define LV_LABEL_TEXT_SELECTION 1 /*Enable selecting text of the label*/
     #define LV_LABEL_LONG_TXT_HINT 1  /*Store some extra info in labels to speed up drawing of very long texts*/
@@ -690,7 +690,7 @@
 #define LV_USE_FLEX 1
 
 /*A layout similar to Grid in CSS.*/
-#define LV_USE_GRID 1
+#define LV_USE_GRID 0      /* 禁用网格布局组件 */
 
 /*====================
  * 3RD PARTS LIBRARIES
@@ -844,17 +844,17 @@
  *==================*/
 
 /*1: Enable API to take snapshot for object*/
-#define LV_USE_SNAPSHOT 0
+#define LV_USE_SNAPSHOT 0  /* 禁用对象快照功能 */
 
 /*1: Enable system monitor component*/
-#define LV_USE_SYSMON   1
+#define LV_USE_SYSMON   0    /* 禁用系统监视器组件 */
 #if LV_USE_SYSMON
     /*Get the idle percentage. E.g. uint32_t my_get_idle(void);*/
     #define LV_SYSMON_GET_IDLE lv_timer_get_idle
 
     /*1: Show CPU usage and FPS count
      * Requires `LV_USE_SYSMON = 1`*/
-    #define LV_USE_PERF_MONITOR 1
+    #define LV_USE_PERF_MONITOR 1  /* 启用性能监视器 */
     #if LV_USE_PERF_MONITOR
         #define LV_USE_PERF_MONITOR_POS LV_ALIGN_BOTTOM_RIGHT
 
@@ -865,7 +865,7 @@
     /*1: Show the used memory and the memory fragmentation
      * Requires `LV_USE_STDLIB_MALLOC = LV_STDLIB_BUILTIN`
      * Requires `LV_USE_SYSMON = 1`*/
-    #define LV_USE_MEM_MONITOR 1
+    #define LV_USE_MEM_MONITOR 1  /* 启用内存监视器 */
     #if LV_USE_MEM_MONITOR
         #define LV_USE_MEM_MONITOR_POS LV_ALIGN_BOTTOM_LEFT
     #endif
@@ -873,7 +873,7 @@
 #endif /*LV_USE_SYSMON*/
 
 /*1: Enable the runtime performance profiler*/
-#define LV_USE_PROFILER 0
+#define LV_USE_PROFILER 0  /* 禁用性能监视器组件 */
 #if LV_USE_PROFILER
     /*1: Enable the built-in profiler*/
     #define LV_USE_PROFILER_BUILTIN 1
@@ -899,23 +899,23 @@
 #endif
 
 /*1: Enable Monkey test*/
-#define LV_USE_MONKEY 0
+#define LV_USE_MONKEY 0      /* 禁用猴子测试组件 */
 
 /*1: Enable grid navigation*/
-#define LV_USE_GRIDNAV 0
+#define LV_USE_GRIDNAV 0      /* 禁用网格导航组件 */
 
 /*1: Enable lv_obj fragment*/
-#define LV_USE_FRAGMENT 0
+#define LV_USE_FRAGMENT 0      /* 禁用 lv_obj 片段组件 */
 
 /*1: Support using images as font in label or span widgets */
-#define LV_USE_IMGFONT 0
+#define LV_USE_IMGFONT 0     /* 禁用使用图像作为字体 */
 
 /*1: Enable an observer pattern implementation*/
-#define LV_USE_OBSERVER 1
+#define LV_USE_OBSERVER 1     /* 启用观察者模式实现 */
 
 /*1: Enable Pinyin input method*/
 /*Requires: lv_keyboard*/
-#define LV_USE_IME_PINYIN 0
+#define LV_USE_IME_PINYIN 0     /* 禁用拼音输入法 */
 #if LV_USE_IME_PINYIN
     /*1: Use default thesaurus*/
     /*If you do not use the default thesaurus, be sure to use `lv_ime_pinyin` after setting the thesaurus*/
@@ -933,7 +933,7 @@
 
 /*1: Enable file explorer*/
 /*Requires: lv_table*/
-#define LV_USE_FILE_EXPLORER                     0
+#define LV_USE_FILE_EXPLORER                     0      /* 禁用文件浏览器组件 */
 #if LV_USE_FILE_EXPLORER
     /*Maximum length of path*/
     #define LV_FILE_EXPLORER_PATH_MAX_LEN        (128)
