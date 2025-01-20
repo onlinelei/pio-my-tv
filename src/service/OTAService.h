@@ -2,12 +2,14 @@
 #define OTA_SERVICE_H
 
 #include <Arduino.h>
-#include <WiFi.h>
+#include <ArduinoJson.h>
 #include <HTTPClient.h>
 #include <HTTPUpdate.h>
-#include "config/version.h"
-#include <ArduinoJson.h>
+#include <WiFi.h>
 #include <vector>
+
+#include "version.h"
+
 
 class OTAService
 {

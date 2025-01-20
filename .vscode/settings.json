@@ -54,6 +54,11 @@
         "typeinfo": "cpp",
         "screens.h": "c",
         "lvgl.h": "c",
-        "images.h": "c"
+        "images.h": "c",
+        "list": "cpp",
+        "condition_variable": "cpp",
+        "mutex": "cpp",
+        "thread": "cpp",
+        "ui.h": "c"
     }
 }
