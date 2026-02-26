@@ -1,13 +1,8 @@
+
 #include "Animation.h"
 
-int numStars = 300;
-int size = 3;
-uint16_t color = TFT_RED;
-int count = 100;
-int speed = 5;
-
 Animation::Animation()
-    : loadNum(1) {}
+    : loadNum(1), m_numStars(300), m_size(3), m_color(TFT_RED), m_count(100), m_speed(5) {}
 Animation::~Animation()
 {
 }
@@ -33,12 +28,12 @@ void Animation::runStarFieldAuto()
         TFT_PINK
     };
 
-    if (count <= 0)
+    if (m_count <= 0)
     {
-        count = 20;
-        numStars = random(100) + 300;
-        color = colors[random(17)];
+        m_count = 20;
+        m_numStars = random(100) + 300;
+        m_color = colors[random(17)];
     }
-    runStarField(numStars, size, speed, color); // 调用绘制星空的函数
-    count -= 1;
+    runStarField(m_numStars, m_size, m_speed, m_color); // 调用绘制星空的函数
+    m_count -= 1;
 }

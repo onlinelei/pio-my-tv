@@ -21,6 +21,11 @@ private:
     Animation &operator=(const Animation &) = delete;
 
     byte loadNum;
+    int m_numStars;
+    int m_size;
+    uint16_t m_color;
+    int m_count;
+    int m_speed;
 };
 
 #endif // ANIMATION_H
