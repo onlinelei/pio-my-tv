@@ -2,18 +2,12 @@
 #define LVGLSERVICE_H
 
 #include <lvgl.h>
+#include <esp_heap_caps.h>
+#include "config/display_config.h"
+#include "driver/QuadPanel.h"
 
-#if LV_USE_TFT_ESPI
-#include <TFT_eSPI.h>
-#endif
-#include <demos/widgets/lv_demo_widgets.h>
-#include <demos/benchmark/lv_demo_benchmark.h>
-
-#if LV_USE_TFT_ESPI
-#define DRAW_BUF_SIZE (TFT_WIDTH * TFT_HEIGHT / 10 * (LV_COLOR_DEPTH / 8))
-uint32_t draw_buf[DRAW_BUF_SIZE / 4];
-#define TFT_ROTATION LV_DISPLAY_ROTATION_0
-#endif
+// 启用 montserrat_20 字体（动画展示用）
+LV_FONT_DECLARE(lv_font_montserrat_20);
 
 class LVGLService
 {
@@ -28,50 +22,69 @@ public:
     {
         String LVGL_Arduino = "Hello Arduino! ";
         LVGL_Arduino += String('V') + lv_version_major() + "." + lv_version_minor() + "." + lv_version_patch();
-
         Serial.println(LVGL_Arduino);
 
         lv_init();
-
-        /*Set a tick source so that LVGL will know how much time elapsed. */
         lv_tick_set_cb(my_tick);
 
-        lv_display_t *disp;
-#if LV_USE_TFT_ESPI
-        /*TFT_eSPI can be enabled lv_conf.h to initialize the display in a simple way*/
-        disp = lv_tft_espi_create(TFT_WIDTH, TFT_HEIGHT, draw_buf, sizeof(draw_buf));
-        lv_display_set_rotation(disp, TFT_ROTATION);
-#else
-        /*Else create a display yourself*/
-        disp = lv_display_create(TFT_WIDTH, TFT_HEIGHT);
-        lv_display_set_flush_cb(disp, my_disp_flush);
-        lv_display_set_buffers(disp, draw_buf, NULL, sizeof(draw_buf), LV_DISPLAY_RENDER_MODE_PARTIAL);
-#endif
+        // 1) 先初始化 4 屏硬件（LovyanGFX）
+        QuadPanel::getInstance().init();
 
-        // lv_obj_t *label = lv_label_create(lv_screen_active());
-        // lv_label_set_text(label, "Hello Arduino, I'm LVGL!");
-        // lv_obj_align(label, LV_ALIGN_CENTER, 0, 0);
+        // 2) 创建 LVGL 逻辑显示 480x480
+        lv_display_t *disp = lv_display_create(BIG_SCREEN_W, BIG_SCREEN_H);
+        lv_display_set_flush_cb(disp, QuadPanel::lvglFlushCb);
 
-        // lv_demo_widgets();
-        // lv_demo_benchmark();
+        // 3) Partial render 模式：分配两块 1/8 屏缓冲，优先 PSRAM
+        //    单块 = 480 * 60 * 2bytes = 57,600 bytes ≈ 56KB
+        const size_t buf_pixels = BIG_SCREEN_W * 60;
+        const size_t buf_bytes = buf_pixels * sizeof(lv_color_t);
 
-        Serial.println("Setup done");
+        lv_color_t *buf1 = (lv_color_t *)heap_caps_malloc(buf_bytes, MALLOC_CAP_SPIRAM | MALLOC_CAP_8BIT);
+        lv_color_t *buf2 = (lv_color_t *)heap_caps_malloc(buf_bytes, MALLOC_CAP_SPIRAM | MALLOC_CAP_8BIT);
+
+        if (!buf1 || !buf2)
+        {
+            Serial.println("[LVGL] PSRAM alloc failed! Falling back to internal RAM.");
+            if (buf1)
+            {
+                free(buf1);
+                buf1 = nullptr;
+            }
+            if (buf2)
+            {
+                free(buf2);
+                buf2 = nullptr;
+            }
+            buf1 = (lv_color_t *)heap_caps_malloc(buf_bytes, MALLOC_CAP_8BIT);
+            buf2 = (lv_color_t *)heap_caps_malloc(buf_bytes, MALLOC_CAP_8BIT);
+        }
+
+        if (!buf1)
+        {
+            Serial.println("[LVGL] FATAL: Cannot allocate display buffer!");
+            return;
+        }
+
+        lv_display_set_buffers(disp, buf1, buf2, buf_bytes, LV_DISPLAY_RENDER_MODE_PARTIAL);
+        lv_display_set_rotation(disp, LV_DISPLAY_ROTATION_0);
+
+        Serial.printf("[LVGL] Display created: %dx%d, buf=%uKB x2, PSRAM=%s\n",
+                      BIG_SCREEN_W, BIG_SCREEN_H,
+                      (unsigned)(buf_bytes / 1024),
+                      heap_caps_get_free_size(MALLOC_CAP_SPIRAM) > 0 ? "YES" : "NO");
+
+        Serial.println("[LVGL] Setup done.");
     }
 
     void loop()
     {
-        lv_timer_handler(); /* let the GUI do its work */
+        lv_timer_handler();
     }
 
 private:
     LVGLService() {}
     LVGLService(const LVGLService &) = delete;
     LVGLService &operator=(const LVGLService &) = delete;
-
-    static void my_disp_flush(lv_display_t *disp, const lv_area_t *area, uint8_t *px_map)
-    {
-        lv_display_flush_ready(disp);
-    }
 
     static uint32_t my_tick(void)
     {
