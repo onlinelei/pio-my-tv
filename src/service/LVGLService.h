@@ -49,6 +49,13 @@ public:
         // 初始化UI
         ui_init();
         Serial.println("Setup done");
+
+        // 配置 PWM
+        ledcSetup(0, 5000, 8);  // 设置 PWM 通道
+        ledcAttachPin(22, 0);   // 将 PWM 通道绑定到背光引脚
+
+        // 初始亮度设置为 50%
+        ledcWrite(0, 230);  // 128 对应 50% 占空比 (255 * 0.5)
     }
 
     // LVGL主循环

@@ -59,6 +59,7 @@
         "condition_variable": "cpp",
         "mutex": "cpp",
         "thread": "cpp",
-        "ui.h": "c"
+        "ui.h": "c",
+        "vars.h": "c"
     }
 }
