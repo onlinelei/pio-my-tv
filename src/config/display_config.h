@@ -42,8 +42,24 @@
 #define PIN_LCD_CS4     1    // 右下 - 第四象限
 
 // ---- SPI 频率 ----
-// 多屏并联走线较长，先用 20MHz 确保稳定，确认正常后逐步提高到 27/33/40MHz
-#define LCD_SPI_FREQ    20000000UL
+// =================================================================
+// 🔧 【可调节 #1】SPI 总线频率 — 遇黑屏/雪花屏先调这里！
+// =================================================================
+// 多屏并联走线较长 + 跳线/杭接，频率越高越容易丢包 → 黑屏/雪花屏。
+// 遇不稳定时从高到低逐个尝试，取连续跑30分钟不闪烁的最高频率：
+//
+//   40000000UL  =  40 MHz   ⚠️ 极限、需短走线+好 PCB
+//   33000000UL  =  33 MHz   ⚠️ 激进
+//   27000000UL  =  27 MHz
+//   20000000UL  =  20 MHz   上一版默认 (不够稳)
+//   10000000UL  =  10 MHz   ✅ 当前默认，代码在这
+//    8000000UL  =   8 MHz   保守
+//    5000000UL  =   5 MHz   最保守，几乎不会丢包
+//    4000000UL  =   4 MHz   极低（刷新很慢但稳）
+//
+// 修改后需重新 pio run -t upload
+#define LCD_SPI_FREQ 10000000UL // ←←← 在这里调频率
+// =================================================================
 
 // ---- 背光 PWM 配置 ----
 #define BL_PWM_CHANNEL  0
@@ -74,13 +90,13 @@ struct PanelCfg {
 
 static const PanelCfg kPanelCfg[PANEL_COUNT] = {
     // CS1 → 第二象限（左上） UP朝右→左旋90°→ rotation=3
-    { PIN_LCD_CS1, /*rotation=*/3, /*offset_x=*/0,            /*offset_y=*/0,            /*brightness=*/100 },
+    {PIN_LCD_CS1, /*rotation=*/0, /*offset_x=*/0, /*offset_y=*/0, /*brightness=*/100},
     // CS2 → 第一象限（右上） UP朝左→右旋90°→ rotation=1
-    { PIN_LCD_CS2, /*rotation=*/1, /*offset_x=*/SUB_SCREEN_W, /*offset_y=*/0,            /*brightness=*/100 },
+    {PIN_LCD_CS2, /*rotation=*/0, /*offset_x=*/SUB_SCREEN_W, /*offset_y=*/0, /*brightness=*/100},
     // CS3 → 第三象限（左下） UP朝右→左旋90°→ rotation=3
-    { PIN_LCD_CS3, /*rotation=*/3, /*offset_x=*/0,            /*offset_y=*/SUB_SCREEN_H, /*brightness=*/100 },
+    {PIN_LCD_CS3, /*rotation=*/0, /*offset_x=*/0, /*offset_y=*/SUB_SCREEN_H, /*brightness=*/100},
     // CS4 → 第四象限（右下） UP朝左→右旋90°→ rotation=1
-    { PIN_LCD_CS4, /*rotation=*/1, /*offset_x=*/SUB_SCREEN_W, /*offset_y=*/SUB_SCREEN_H, /*brightness=*/100 },
+    {PIN_LCD_CS4, /*rotation=*/0, /*offset_x=*/SUB_SCREEN_W, /*offset_y=*/SUB_SCREEN_H, /*brightness=*/100},
 };
 
 #endif // DISPLAY_CONFIG_H
