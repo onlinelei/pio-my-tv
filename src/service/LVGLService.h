@@ -27,16 +27,22 @@ public:
         lv_init();
         lv_tick_set_cb(my_tick);
 
-        // 1) 先初始化 4 屏硬件（LovyanGFX）
+        // 1) 先初始化 3 屏硬件（LovyanGFX）
         QuadPanel::getInstance().init();
 
-        // 2) 创建 LVGL 逻辑显示 480x480
+        // 2) 创建 LVGL 逻辑显示 720x240（三屏横排）
         lv_display_t *disp = lv_display_create(BIG_SCREEN_W, BIG_SCREEN_H);
         lv_display_set_flush_cb(disp, QuadPanel::lvglFlushCb);
 
-        // 3) Partial render 模式：分配两块 1/8 屏缓冲，优先 PSRAM
-        //    单块 = 480 * 60 * 2bytes = 57,600 bytes ≈ 56KB
-        const size_t buf_pixels = BIG_SCREEN_W * 60;
+        // 3) Partial render 模式：分配两块缓冲区，优先 PSRAM
+        //    硬件极限：240 行 = 整屏高度（Full Buffer 模式）
+        //    PSRAM 占用：buf = SCREEN_W × BUF_LINES × 2 bytes × 2块(双缓冲)
+        //    240=全屏(691KB)  120=半屏(346KB)  60=默认(173KB)
+        //    通过 platformio.ini 的 -DLVGL_BUF_LINES=xxx 配置
+#ifndef LVGL_BUF_LINES
+#define LVGL_BUF_LINES 60
+#endif
+        const size_t buf_pixels = BIG_SCREEN_W * LVGL_BUF_LINES;
         const size_t buf_bytes = buf_pixels * sizeof(lv_color_t);
 
         lv_color_t *buf1 = (lv_color_t *)heap_caps_malloc(buf_bytes, MALLOC_CAP_SPIRAM | MALLOC_CAP_8BIT);

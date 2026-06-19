@@ -9,7 +9,7 @@
 /**
  * @brief 单块子屏（继承 LovyanGFX 的 LGFX_Device）
  *
- * 4 块子屏共用 SPI host (SPI2_HOST)，通过 bus_shared = true 实现仲裁。
+ * 3 块子屏共用 SPI host (SPI2_HOST)，通过 bus_shared = true 实现仲裁。
  * 每屏拥有独立 CS 引脚和可配置旋转角度。
  */
 class LGFX_SubPanel : public lgfx::LGFX_Device {
@@ -23,10 +23,10 @@ private:
 };
 
 /**
- * @brief 四屏统一管理器（单例）
+ * @brief 三屏统一管理器（单例）
  *
  * 负责：
- * - 初始化 4 块 ST7789 子屏
+ * - 初始化 3 块 ST7789 子屏（水平并排）
  * - PWM 背光亮度控制 + 软件亮度补偿
  * - 提供 LVGL flush 回调（按脏区域自动派发到对应子屏）
  * - 运行时旋转参数调整
@@ -40,6 +40,9 @@ public:
 
     /** 初始化所有屏幕（含背光、旋转、清屏、方向标识） */
     void init();
+
+    /** 内容就绪后点亮背光（解决开机雪花屏） */
+    void turnOnBacklight();
 
     /** 提供给 LVGL 的 flush 回调（static，内部通过单例转发） */
     static void lvglFlushCb(lv_display_t* disp,
@@ -68,7 +71,7 @@ private:
 
     LGFX_SubPanel* _panels[PANEL_COUNT] = { nullptr };
     bool           _inited = false;
-    uint8_t        _maxBrightness = 100;   // 4 屏中最大亮度值
+    uint8_t _maxBrightness = 100; // 3 屏中最大亮度值
 };
 
 #endif // QUAD_PANEL_H

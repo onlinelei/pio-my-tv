@@ -62,9 +62,11 @@ void QuadPanel::init() {
     if (_maxBrightness == 0) _maxBrightness = 100;
 
     // BL 使用 PWM（LOW 有效 → duty 反转：亮度100% = duty 0%）
+    // 初始亮度设为 0（关闭），避免 SPI 初始化期间出现雪花屏
     ledcSetup(BL_PWM_CHANNEL, BL_PWM_FREQ, BL_PWM_RESOLUTION);
     ledcAttachPin(PIN_LCD_BL, BL_PWM_CHANNEL);
-    setBrightness(_maxBrightness);
+    ledcWrite(BL_PWM_CHANNEL, 255); // 255 = 完全关闭背光 (LOW有效)
+    Serial.println("[QuadPanel] Backlight OFF during init.");
 
     // ===== 手动统一复位所有屏幕（共享 RST 线） =====
     pinMode(PIN_LCD_RST, OUTPUT);
@@ -89,16 +91,14 @@ void QuadPanel::init() {
 
     // ===== 方向标识：每屏显示编号 + UP箭头 + 旋转值 =====
     const uint16_t debugColor[PANEL_COUNT] = {
-        0xF800,  // Red
-        0x07E0,  // Green
-        0x001F,  // Blue
-        0xFFE0   // Yellow
+        0xF800, // Red    - 左屏
+        0x07E0, // Green  - 中屏
+        0x001F  // Blue   - 右屏
     };
-    const char* posLabel[PANEL_COUNT] = {
-        "LT",   // Left-Top
-        "RT",   // Right-Top
-        "LB",   // Left-Bottom
-        "RB"    // Right-Bottom
+    const char *posLabel[PANEL_COUNT] = {
+        "L", // Left
+        "C", // Center
+        "R"  // Right
     };
 
     for (int i = 0; i < PANEL_COUNT; ++i) {
@@ -135,8 +135,14 @@ void QuadPanel::init() {
     }
 
     _inited = true;
-    Serial.printf("[QuadPanel] All %d panels initialized. MaxBrightness=%d\n",
+    Serial.printf("[QuadPanel] All %d panels initialized. MaxBrightness=%d (backlight still OFF)\n",
                   PANEL_COUNT, _maxBrightness);
+}
+
+void QuadPanel::turnOnBacklight()
+{
+    setBrightness(_maxBrightness);
+    Serial.println("[QuadPanel] Backlight ON — content ready.");
 }
 
 void QuadPanel::setBrightness(uint8_t value) {
@@ -239,12 +245,20 @@ void QuadPanel::flushArea(const lv_area_t* area, uint8_t* px_map) {
         // 🔧 【可调节 #2】屏间切换延时 — 调频率后还不稳再加大这个
         // =================================================================
         // SPI 从当前屏切换到下一屏时，给 CS 变化/总线脱险预留缓冲。
+        // 硬件极限：0μs（完全无延时，CS 切换本身有几个时钟周期开销）
         // 越大越稳，但会拖慢整体刷新。
-        //   delayMicroseconds(5)    上一版 (5μs)
-        //   delayMicroseconds(20)   ✅ 当前默认 (20μs) — 推荐
+        //   delayMicroseconds(0)    极限（无延时，依赖 SPI 时钟间隙）
+        //   delayMicroseconds(2)    激进
+        //   delayMicroseconds(5)    较快 ✅ 当前
+        //   delayMicroseconds(20)   推荐
         //   delayMicroseconds(50)   保守
         //   delayMicroseconds(100)  最保守
-        delayMicroseconds(20); // ←←← 在这里调屏间延时
+        //
+        // 通过 platformio.ini 的 -DPANEL_SWITCH_DELAY_US=xxx 配置
         // =================================================================
+#ifndef PANEL_SWITCH_DELAY_US
+#define PANEL_SWITCH_DELAY_US 5
+#endif
+        delayMicroseconds(PANEL_SWITCH_DELAY_US);
     }
 }
