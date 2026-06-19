@@ -90,13 +90,13 @@ struct PanelCfg {
 
 static const PanelCfg kPanelCfg[PANEL_COUNT] = {
     // CS1 → 第二象限（左上） UP朝右→左旋90°→ rotation=3
-    {PIN_LCD_CS1, /*rotation=*/0, /*offset_x=*/0, /*offset_y=*/0, /*brightness=*/100},
+    {PIN_LCD_CS1, /*rotation=*/3, /*offset_x=*/0, /*offset_y=*/0, /*brightness=*/100},
     // CS2 → 第一象限（右上） UP朝左→右旋90°→ rotation=1
-    {PIN_LCD_CS2, /*rotation=*/0, /*offset_x=*/SUB_SCREEN_W, /*offset_y=*/0, /*brightness=*/100},
+    {PIN_LCD_CS2, /*rotation=*/1, /*offset_x=*/SUB_SCREEN_W, /*offset_y=*/0, /*brightness=*/100},
     // CS3 → 第三象限（左下） UP朝右→左旋90°→ rotation=3
-    {PIN_LCD_CS3, /*rotation=*/0, /*offset_x=*/0, /*offset_y=*/SUB_SCREEN_H, /*brightness=*/100},
+    {PIN_LCD_CS3, /*rotation=*/3, /*offset_x=*/0, /*offset_y=*/SUB_SCREEN_H, /*brightness=*/100},
     // CS4 → 第四象限（右下） UP朝左→右旋90°→ rotation=1
-    {PIN_LCD_CS4, /*rotation=*/0, /*offset_x=*/SUB_SCREEN_W, /*offset_y=*/SUB_SCREEN_H, /*brightness=*/100},
+    {PIN_LCD_CS4, /*rotation=*/1, /*offset_x=*/SUB_SCREEN_W, /*offset_y=*/SUB_SCREEN_H, /*brightness=*/100},
 };
 
 #endif // DISPLAY_CONFIG_H
