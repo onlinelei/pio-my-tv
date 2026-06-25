@@ -4,6 +4,7 @@
 #include "service/BootButton.h"
 #include "service/SetupMode.h"
 #include "service/NormalMode.h"
+#include "service/AudioTest.h"
 
 static bool _setupMode = false;
 
@@ -36,6 +37,7 @@ void setup()
 void loop()
 {
     BootButton::getInstance().loop();
+    AudioTest::pollSerial(); // 串口按 'a' 触发音频测试
 
     if (_setupMode)
         SetupMode::getInstance().loop();
